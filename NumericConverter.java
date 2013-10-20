@@ -5,16 +5,14 @@ import java.util.Scanner;
 class NumericConvertor {
     Integer i;
 
-    
-    //  contructor
+    // contructor
     NumericConvertor(Integer i) {
         this.i = i;
     }
 
-    
     // convert a numerical digit (0 - 19) to an english word
     String digitHelper(String s) {
-        if (s == "0")
+        if (s.equals("0"))
             return "";
         else if (s.equals("1"))
             return "one";
@@ -56,7 +54,7 @@ class NumericConvertor {
             return "nineteen";
     }
 
-    // convert the second digit to the correct prefix 
+    // convert the second digit to the correct prefix
     String secondDigitHelper(String s) {
         if (s.equals("2"))
             return "twenty";
@@ -139,6 +137,10 @@ class NumericConvertor {
         String myString = this.i.toString();
         if (this.i == 0)
             return "zero";
+        else if (myString.startsWith("-"))
+            return "negative " + 
+        convertString(this.i.toString().substring(1, i.toString().length()));
+        // remove leading zeroes
         else if (myString.startsWith("0")) {
             while (myString.startsWith("0")) {
                 myString = myString.substring(1, this.i.toString().length());
@@ -151,20 +153,18 @@ class NumericConvertor {
 }
 
 class Algorithm {
-    
-    public static void printInput() {
-        
-        
-        Scanner scan = new Scanner(System.in); 
-        int i = scan.nextInt(); 
 
-        
+    public static void printInput() {
+
+        Scanner scan = new Scanner(System.in);
+        int i = scan.nextInt();
+
         NumericConvertor number = new NumericConvertor(i);
-        
+
         System.out.println(number.convert());
-        
+
     }
-    
+
     public static void main(String args[]) {
         printInput();
     }
